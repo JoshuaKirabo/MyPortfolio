@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Kirabo - Software Engineer</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaqueries.css">
+</head>
+
+<body>
+    <!-------------------------- Beginning of Navbar ------------------------------------->
+    <nav id="navbar">
+        <div class="logo">Joshua Kirabo</div>
+        <div>
+            <ul class="navbarLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!----------------------------- End of Navbar ----------------------------------------->
+
+     <!-------------------------- Beginning of Hamburger Menu ------------------------------------->
+     <nav id = "hamburgerNav">
+        <div class="logo">Joshua Kirabo</div>
+        <div class="hamburgerMenu">
+            <div class="hamburgerIcon" onclick = "toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="menuLinks">
+                <li><a href="#about" onclick = "toggleMenu()">About</a></li>
+                <li><a href="#experience" onclick = "toggleMenu()">Experience</a></li>
+                <li><a href="#projects" onclick = "toggleMenu()">Projects</a></li>
+                <li><a href="#contact" onclick = "toggleMenu()">Contact</a></li>
+            </div>
+        </div>
+     </nav>
+    <!-------------------------- End of Hamburger Menu ------------------------------------->
+
+    <!-------------------------- Beginning of Hero Area ------------------------------------->
+    <section id = "profile">
+        <!-------------------------- Profile Picture ------------------------------------->
+        <div class="joshPicContainer">
+            <img src="./assets/Josh_Hero.png" alt="Joshua Kirabo's Profile Pictire">
+        </div>
+
+        <div class="sectionText">
+            <!-------------------------- Introduction ------------------------------------->
+            <p class="sectionText_P1">Hello, I'm</p>
+            <h1 class="title">Joshua Kirabo</h1>
+
+            <p class="sectionText_P2">Software Engineer</p>
+
+            <!-------------------------- Buttons  ------------------------------------->
+            <div class="buttonContainer">
+                <button class="btn resume" onclick = "window.open('./assets/Joshua_Kirabo_Resume.pdf')">
+                    Download Resume
+                </button>
+
+                <button class="btn contactInfo" onclick = "location.href = '#contact'">
+                    Contact Info
+                </button>
+            </div>
+
+            <!-------------------------- Socials ------------------------------------->
+            <div id = "socialsContainer">
+                <img src="./assets/linkedin.png" alt="Joshua Kirabo's LinkedIn" class ="icon" onclick= "location.href='https://www.linkedin.com/in/joshua-kisaku-kirabo/'">
+                <img src="./assets/github.png" alt="Joshua Kirabo's LinkedIn" class ="icon" onclick= "location.href='https://github.com/JoshuaKirabo'">
+            </div>
+        </div>
+
+    </section>
+    <!----------------------------- End of Hero Area ---------------------------------------->
+
+
+
+    <!-------------------------- Linking JavaScript------------------------------------->
+    <script src="./script.js"></script>
+    <!-------------------------- End of linking JavaScript------------------------------------->
+</body>
+
+</html>

@@ -42,6 +42,43 @@ function rewriteLinksAndAssets(input: string): string {
     input,
   );
 
+  // Replace the 2-line SVG hamburger with a 3-bar animated version that
+  // morphs into an X when the sidebar is open. The wrapper keeps id
+  // `offcanvas-toggle` so the template's main.js still toggles the menu,
+  // but is lifted above the offcanvas so the X stays clickable.
+  content = content.replace(
+    /<div id="offcanvas-toggle"[\s\S]*?<\/div>\s*<!-- Button End -->/i,
+    '<div id="offcanvas-toggle" class="jk-menu-btn flex-none bg-active flex items-center flex-wrap justify-center py-7 px-[38px] cursor-pointer relative z-[60]">' +
+      '<button type="button" aria-label="Toggle menu" class="jk-hamburger">' +
+      '<span class="jk-hamburger-bar"></span>' +
+      '<span class="jk-hamburger-bar"></span>' +
+      '<span class="jk-hamburger-bar"></span>' +
+      "</button>" +
+      "</div>" +
+      "<!-- Button End -->",
+  );
+
+  // Drop the Tailwind slide-in utilities (`transform`, `translate-x-full`,
+  // `transition-all`, `ease-in-out`, `duration-300`) from the offcanvas so
+  // our clip-path reveal in globals.css isn't fighting them.
+  content = content.replace(
+    /<div id="offcanvas" class="([^"]+)">/i,
+    (_match, classList: string) => {
+      const cleaned = classList
+        .split(/\s+/)
+        .filter(
+          (cls) =>
+            cls !== "transform" &&
+            cls !== "translate-x-full" &&
+            cls !== "transition-all" &&
+            cls !== "ease-in-out" &&
+            cls !== "duration-300",
+        )
+        .join(" ");
+      return `<div id="offcanvas" class="${cleaned}">`;
+    },
+  );
+
   // Replace template logos with text branding.
   content = content.replace(
     /<img[^>]*src="\/assets\/images\/logo\/logo\.png"[^>]*>/gi,
@@ -78,9 +115,9 @@ function rewriteLinksAndAssets(input: string): string {
                 </a>
             </li>
             <li>
-                <a href="https://x.com" class="text-white hover:text-orange" target="_blank" rel="noopener noreferrer" aria-label="X">
+                <a href="mailto:joshuak2001@gmail.com" class="text-white hover:text-orange" aria-label="Email">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.9979 3H21.0656L14.3646 10.6566L22.247 21H16.0759L11.2411 14.7285L5.75236 21H2.68276L9.85074 12.809L2.31152 3H8.63929L13.0098 8.7315L17.9979 3ZM16.9216 19.1614H18.6214L7.71504 4.74204H5.89095L16.9216 19.1614Z" fill="currentColor" fill-opacity="0.9"></path>
+                        <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor" fill-opacity="0.9"></path>
                     </svg>
                 </a>
             </li>
@@ -158,9 +195,9 @@ function transformHomePage(input: string): string {
                 </a>
             </li>
             <li>
-                <a href="https://x.com" class="text-black-800 hover:text-orange" target="_blank" rel="noopener noreferrer" aria-label="X">
+                <a href="mailto:joshuak2001@gmail.com" class="text-black-800 hover:text-orange" aria-label="Email">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.9979 3H21.0656L14.3646 10.6566L22.247 21H16.0759L11.2411 14.7285L5.75236 21H2.68276L9.85074 12.809L2.31152 3H8.63929L13.0098 8.7315L17.9979 3ZM16.9216 19.1614H18.6214L7.71504 4.74204H5.89095L16.9216 19.1614Z" fill="currentColor" fill-opacity="0.9"></path>
+                        <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor" fill-opacity="0.9"></path>
                     </svg>
                 </a>
             </li>
@@ -205,7 +242,7 @@ function transformHomePage(input: string): string {
   content = content.replace(/Product Designer/g, "Software Engineer");
   content = content.replace(/Based in German/g, "Based in Arizona");
   content = content.replace(/based in German/gi, "based in Arizona");
-  content = content.replace(/hello@henry\.com/gi, "hello@joshuakirabo.com");
+  content = content.replace(/hello@henry\.com/gi, "joshuak2001@gmail.com");
   content = content.replace(
     /<section class="about-section pb-\[120px\]"/i,
     '<section class="about-section pt-[120px] pb-[120px]"',

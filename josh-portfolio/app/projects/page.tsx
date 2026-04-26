@@ -42,7 +42,7 @@ const PROJECTS = [
 
 export default function ProjectsPage() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-clip">
       <SiteHeader activePath="/projects" />
 
       <section className="bg-secondary py-[90px]">

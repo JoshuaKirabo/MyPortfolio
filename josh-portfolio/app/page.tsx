@@ -19,6 +19,7 @@ import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import ProjectCardGlow, { type CardBrandAccent } from "@/components/project-card-glow";
 import ProjectScroller from "@/components/project-scroller";
+import HeroLetsTalkBadge from "@/components/hero-lets-talk-badge";
 
 export const metadata: Metadata = {
   title: "Joshua Kirabo — Software Engineer",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-clip">
       <SiteHeader activePath="/" />
 
       <HeroSection />
@@ -43,7 +44,13 @@ export default function HomePage() {
 
 function ArrowIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className="h-6 w-6 shrink-0"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
       <path
         d="M7 17L17 7"
         stroke="currentColor"
@@ -64,10 +71,12 @@ function ArrowIcon() {
   );
 }
 
+const HERO_SOCIAL_ICON = "h-6 w-6 shrink-0";
+
 function HeroSocialNav() {
-  const linkClass = "text-black-800 hover:text-orange";
+  const linkClass = "text-black-800 hover:text-orange inline-flex";
   return (
-    <ul className="flex flex-wrap gap-x-4 items-center">
+    <ul className="flex flex-wrap items-center gap-x-4">
       <li>
         <a
           href="https://www.linkedin.com"
@@ -76,7 +85,7 @@ function HeroSocialNav() {
           rel="noopener noreferrer"
           aria-label="LinkedIn"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className={HERO_SOCIAL_ICON} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M6.94043 5.00002C6.94017 5.53046 6.7292 6.03906 6.35394 6.41394C5.97868 6.78883 5.46986 6.99929 4.93943 6.99902C4.409 6.99876 3.90039 6.78779 3.52551 6.41253C3.15062 6.03727 2.94016 5.52846 2.94043 4.99802C2.9407 4.46759 3.15166 3.95899 3.52692 3.5841C3.90218 3.20922 4.411 2.99876 4.94143 2.99902C5.47186 2.99929 5.98047 3.21026 6.35535 3.58552C6.73024 3.96078 6.9407 4.46959 6.94043 5.00002ZM7.00043 8.48002H3.00043V21H7.00043V8.48002ZM13.3204 8.48002H9.34043V21H13.2804V14.43C13.2804 10.77 18.0504 10.43 18.0504 14.43V21H22.0004V13.07C22.0004 6.90002 14.9404 7.13002 13.2804 10.16L13.3204 8.48002Z"
               fill="currentColor"
@@ -93,7 +102,7 @@ function HeroSocialNav() {
           rel="noopener noreferrer"
           aria-label="GitHub"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className={HERO_SOCIAL_ICON} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C1.99977 14.0992 2.65958 16.1454 3.88679 17.8484C5.114 19.5515 6.84631 20.8249 8.83798 21.488C9.33798 21.575 9.52598 21.275 9.52598 21.012C9.52598 20.775 9.51298 19.988 9.51298 19.15C7.00098 19.613 6.35098 18.538 6.15098 17.975C6.03798 17.687 5.55098 16.8 5.12598 16.562C4.77598 16.375 4.27598 15.912 5.11298 15.9C5.90098 15.887 6.46298 16.625 6.65098 16.925C7.55098 18.437 8.98798 18.012 9.56298 17.75C9.65098 17.1 9.91298 16.663 10.201 16.413C7.97598 16.163 5.65098 15.3 5.65098 11.475C5.65098 10.387 6.03798 9.488 6.67598 8.788C6.57598 8.538 6.22598 7.513 6.77598 6.138C6.77598 6.138 7.61298 5.875 9.52598 7.162C10.3401 6.9364 11.1812 6.82302 12.026 6.825C12.876 6.825 13.726 6.937 14.526 7.162C16.439 5.862 17.276 6.138 17.276 6.138C17.826 7.513 17.476 8.538 17.376 8.788C18.013 9.488 18.401 10.375 18.401 11.475C18.401 15.313 16.064 16.163 13.839 16.413C14.201 16.725 14.514 17.325 14.514 18.263C14.514 19.6 14.501 20.675 14.501 21.013C14.501 21.275 14.689 21.587 15.189 21.487C17.1738 20.8166 18.8985 19.5408 20.1203 17.8389C21.3421 16.1371 21.9995 14.095 22 12C22 6.475 17.525 2 12 2H12.001Z"
               fill="currentColor"
@@ -104,7 +113,7 @@ function HeroSocialNav() {
       </li>
       <li>
         <a href="mailto:joshuak2001@gmail.com" className={linkClass} aria-label="Email">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className={HERO_SOCIAL_ICON} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"
               fill="currentColor"
@@ -113,88 +122,101 @@ function HeroSocialNav() {
           </svg>
         </a>
       </li>
+      <li>
+        <Link href="/" className={linkClass} aria-label="Portfolio">
+          <svg className={HERO_SOCIAL_ICON} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C16.97 21 21 16.97 21 12C21 7.03 16.97 3 12 3ZM18.93 11H15.95C15.8 9.44 15.28 7.98 14.43 6.74C16.77 7.59 18.5 9.08 18.93 11ZM12 4.84C13.22 6.16 13.97 8.03 14.14 11H9.86C10.03 8.03 10.78 6.16 12 4.84ZM5.07 13H8.05C8.2 14.56 8.72 16.02 9.57 17.26C7.23 16.41 5.5 14.92 5.07 13ZM8.05 11H5.07C5.5 9.08 7.23 7.59 9.57 6.74C8.72 7.98 8.2 9.44 8.05 11ZM12 19.16C10.78 17.84 10.03 15.97 9.86 13H14.14C13.97 15.97 13.22 17.84 12 19.16ZM14.43 17.26C15.28 16.02 15.8 14.56 15.95 13H18.93C18.5 14.92 16.77 16.41 14.43 17.26Z"
+              fill="currentColor"
+              fillOpacity="0.9"
+            />
+          </svg>
+        </Link>
+      </li>
     </ul>
   );
 }
 
 function HeroSection() {
   return (
-    <section className="hero-sky relative pt-[140px] pb-[125px] overflow-hidden">
-      <div className="hero-stars" aria-hidden="true"></div>
-      <div className="container relative z-[1]">
-        <div className="grid grid-cols-1 2xl:-mx-4">
-          <div className="xl:pt-12 text-center flex flex-col items-center">
-            <span
-              className="font-Syne text-black-800 font-bold text-2xl lg:text-[32px] leading-none flex flex-wrap items-center justify-center mb-3"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <span className="mr-6">
-                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="2" viewBox="0 0 65 2" fill="none">
-                  <path d="M0 1H65" stroke="#080808" />
-                </svg>
+    <section
+      className="hero-first-screen relative flex h-svh min-h-0 w-full flex-col overflow-hidden bg-secondary"
+      aria-label="Introduction"
+    >
+      {/* One full viewport (h-svh/100svh): type + portrait scale with the window like a “fill frame”, not a taller scroll area. */}
+      <div className="flex min-h-0 w-full min-w-0 flex-1 flex-col pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] pt-20 sm:pt-24 md:pt-28 lg:pt-32 2xl:pt-[8.75rem]">
+        <div className="container relative z-[1] flex min-h-0 w-full min-w-0 flex-1 flex-col justify-center">
+          <div className="grid min-h-0 w-full min-w-0 grid-cols-1 2xl:-mx-4">
+            <div className="min-w-0 pr-0 md:pr-[min(30%,20rem)] lg:pr-[min(32%,24rem)] xl:pr-[min(35%,28rem)] 2xl:pr-[min(34%,32rem)]">
+              <span className="mb-[clamp(0.4rem,1.2vmin,0.75rem)] flex flex-wrap items-center font-Syne text-2xl font-bold leading-none text-black-800 lg:text-[32px]">
+                <span className="mr-[min(1.5rem,3vw)]">
+                  <svg
+                    className="h-[0.1em] w-[min(4rem,12vw)]"
+                    viewBox="0 0 65 2"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden
+                  >
+                    <path d="M0 1H65" stroke="#080808" />
+                  </svg>
+                </span>
+                Hello, I&rsquo;m
+                <span className="ml-2" role="img" aria-label="victory hand medium skin tone">
+                  ✌🏽
+                </span>
               </span>
-              Hello, I&rsquo;m
-              <span className="ml-2" role="img" aria-label="victory hand medium skin tone">
-                ✌🏽
-              </span>
-            </span>
-            <h1
-              className="relative z-[1] font-Syne text-black-800 font-bold text-[80px] lg:text-[100px] xl:text-[120px] 2xl:text-[140px] leading-[64px] lg:leading-[80px] xl:leading-[90px] 2xl:leading-[110px] 2xl:before:w-[120px] xl:before:w-[100px] 2xl:before:h-[120px] xl:before:h-[100px] before:rounded-full before:bg-primary before:block before:absolute before:top-[0px] before:left-0 before:-z-[1] lg:before:w-[85px] lg:before:h-[85px] before:w-[70px] before:h-[70px]"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              Joshua
-            </h1>
-            <h2
-              className="font-Syne text-black-800 font-bold text-[80px] lg:text-[100px] xl:text-[120px] 2xl:text-[140px] leading-[64px] lg:leading-[80px] xl:leading-[90px] 2xl:leading-[110px] mb-[20px]"
-              data-aos="fade-up"
-              data-aos-delay="600"
-            >
-              Kirabo
-            </h2>
-            <p
-              className="font-Syne text-black-700 font-bold text-lg md:text-xl xl:text-2xl leading-tight mb-[30px]"
-              data-aos="fade-up"
-              data-aos-delay="800"
-            >
-              Software Engineer | Based in Arizona
-              <span className="ml-2 inline-block" role="img" aria-label="cactus">
-                🌵
-              </span>
-            </p>
+              <h1 className="relative z-[1] font-Syne text-[min(3.5rem,calc(1.1rem+10vw))] font-bold leading-[0.8] text-black-800 sm:text-[80px] sm:leading-[64px] lg:text-[100px] lg:leading-[80px] xl:text-[120px] xl:leading-[90px] 2xl:text-[140px] 2xl:leading-[110px] 2xl:before:h-[120px] 2xl:before:w-[120px] before:absolute before:top-0 before:left-0 before:-z-[1] before:block before:rounded-full before:bg-primary before:h-[70px] before:w-[70px] xl:before:h-[100px] xl:before:w-[100px] lg:before:h-[85px] lg:before:w-[85px]">
+                Joshua
+              </h1>
+              <h2 className="mb-[clamp(0.45rem,1.4vmin,1.1rem)] font-Syne text-[min(3.5rem,calc(1.1rem+10vw))] font-bold leading-[0.8] text-black-800 sm:text-[80px] sm:leading-[64px] lg:text-[100px] lg:leading-[80px] xl:text-[120px] xl:leading-[90px] 2xl:text-[140px] 2xl:leading-[110px] break-words">
+                Kirabo
+              </h2>
+              <p className="mb-[clamp(0.55rem,1.6vmin,1.5rem)] font-Syne text-lg font-bold leading-tight text-black-700 md:text-xl xl:text-2xl">
+                Software Engineer | AI Engineer
+              </p>
 
-            <div className="flex flex-wrap justify-center mb-[50px] md:mb-[60px] xl:mb-[70px] 2xl:mb-[80px]">
-              <span data-aos="fade-up" data-aos-delay="1000">
-                <Link href="/about" className="flex items-center flex-wrap btn-primary mr-2 group">
-                  About Me
+              <div className="mb-[clamp(0.7rem,2.2vmin,2.5rem)] flex flex-wrap gap-x-2 gap-y-2">
+                <Link
+                  href="/contact"
+                  className="flex flex-wrap items-center btn-primary !text-base group md:!text-lg"
+                >
+                  Let&rsquo;s Talk
                   <span className="inline-block ml-3 group-hover:animate-arrow-move-up">
                     <ArrowIcon />
                   </span>
                 </Link>
-              </span>
-              <span data-aos="fade-up" data-aos-delay="1200">
-                <Link href="/contact" className="flex items-center flex-wrap btn-primary-outline group">
-                  Let&rsquo;s Connect
+                <Link
+                  href="/projects"
+                  className="flex flex-wrap items-center btn-primary-outline !text-base group md:!text-lg"
+                >
+                  My Work
                   <span className="inline-block ml-3 group-hover:animate-arrow-move-up">
                     <ArrowIcon />
                   </span>
                 </Link>
-              </span>
-            </div>
+              </div>
 
-            <div
-              className="flex flex-wrap items-center justify-center"
-              data-aos="fade-up"
-              data-aos-duration="850"
-              data-aos-delay="900"
-              data-aos-once="false"
-              data-aos-mirror="true"
-            >
-              <HeroSocialNav />
+              <div className="flex min-h-0 flex-wrap items-center">
+                <HeroSocialNav />
+              </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[min(50%,100vw-0.5rem)] max-w-[min(100%,54rem)] md:block"
+        aria-hidden
+      >
+        <img
+          src="/assets/images/hero/hero.png"
+          alt=""
+          className="ml-auto h-full w-auto max-h-full max-w-full object-contain object-right object-top"
+        />
+      </div>
+
+      <div className="z-[2] hidden md:contents">
+        <HeroLetsTalkBadge />
       </div>
     </section>
   );
@@ -203,12 +225,12 @@ function HeroSection() {
 function AboutMeSection() {
   return (
     <section
-      className="about-section pt-[120px] pb-[120px]"
+      className="about-section py-[100px] xl:py-[120px]"
       data-aos="zoom-out"
       data-aos-delay="300"
     >
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] xl:gap-[134px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] xl:gap-[88px] 2xl:gap-[110px]">
           <div className="relative">
             <img src="/assets/images/about/about1.png" alt="about" />
           </div>
@@ -393,7 +415,7 @@ const SERVICES: Service[] = [
 
 function ServicesSection() {
   return (
-    <section className="py-[120px]">
+    <section className="py-[100px] xl:py-[120px]">
       <div className="container">
         <div className="grid grid-cols-12 gap-6 2xl:gap-0 mb-12 items-center" data-aos="fade-up">
           <div className="col-span-12 lg:col-span-6 xl:col-span-6">
@@ -590,7 +612,7 @@ const PROJECTS: Project[] = [
 
 function PortfolioSection() {
   return (
-    <section className="overflow-x-clip bg-secondary py-[120px]">
+    <section className="overflow-x-clip bg-secondary py-[100px] xl:py-[120px]">
       <div className="container">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12" data-aos="fade-up">

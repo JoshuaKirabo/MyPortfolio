@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ProjectDetailsPage() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-clip">
       <SiteHeader activePath="/project-details" />
 
       <section className="bg-secondary py-[90px]">

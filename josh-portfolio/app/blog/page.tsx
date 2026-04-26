@@ -34,7 +34,7 @@ const POSTS = [
 
 export default function BlogPage() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-clip">
       <SiteHeader activePath="/blog" />
 
       <section className="bg-secondary py-[90px]">

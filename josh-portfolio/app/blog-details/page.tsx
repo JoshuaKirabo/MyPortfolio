@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function BlogDetailsPage() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-clip">
       <SiteHeader activePath="/blog-details" />
 
       <section className="bg-secondary py-[90px]">

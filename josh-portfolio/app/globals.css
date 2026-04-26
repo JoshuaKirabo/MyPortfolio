@@ -32,6 +32,7 @@
 
   --animate-arrow-move-up: arrow-move-up 0.95s cubic-bezier(0.22, 1, 0.36, 1);
   --animate-arrow-move-up-retrigger: arrow-move-up-retrigger 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-perez-badge-spin: perez-badge-spin 7s linear infinite;
 
   @keyframes arrow-move-up {
     0% { opacity: 1; transform: translateX(0) translateY(0) scale(1); }
@@ -48,8 +49,19 @@
   }
 }
 
+/* Hero “Let’s Talk” ring: keyframes here so the name `perez-badge-spin` always resolves to continuous rotation */
+@keyframes perez-badge-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Base type: match public/assets/css/style.css (Perez template) — set DM Sans on html, inherit on body. */
 html {
+  /* 112.5% ≈ 18px `rem` when the UA default is 16px. Perez’ first fontSize block used 18px `base`; this
+     scales all Tailwind `rem` utilities (spacing, `text-sm`/`text-base`, etc.) for a slightly more
+     “zoomed in” / full-frame feel. Pixel-based classes (e.g. `text-[80px]`) are unchanged. */
+  font-size: 112.5%;
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
@@ -87,8 +99,9 @@ body {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-@media (min-width: 1280px) { .container { max-width: 1200px; } }
-@media (min-width: 1440px) { .container { max-width: 1295px; } }
+@media (min-width: 1280px) { .container { max-width: 1240px; } }
+@media (min-width: 1440px) { .container { max-width: 1320px; } }
+@media (min-width: 1920px) { .container { max-width: 1400px; } }
 
 /* ── Buttons ── */
 .btn-primary {
